@@ -4,27 +4,46 @@
 			<th>Rank</th>
 			<th>Level</th>
 			<th>Grade</th>
+			<th></th>
+			<th></th>
 		</tr>
-		<%@levels.each do |level|%>
+		<%@jobLevels.each do |jobLevel|%>
 			<tr>
-				<td><%= level.rank%></td>
-				<td><%= level.level%></td>
-				<td><%= level.grade%></td>
-				<td><a href="#edit" data-toggle = "modal">Edit</a></td>
+				<td><%= jobLevel.rank%></td>
+				<td><%= jobLevel.level%></td>
+				<td><%= jobLevel.grade%></td>
+				<td><%= button_tag 'Edit', class: "btn btn-primary", data: {toggle: 'modal', target: "#edit"}%></td>
+				<td><%= button_to 'Delete', job_level_path(jobLevel), method: :delete, onclick: "return confirm('Are you sure you would like to delete Job Level #{jobLevel.rank} - Level: #{jobLevel.level} Grade: #{jobLevel.grade}')", class: "btn btn-primary"%></td>
 			</tr>
 		<%end%>
 	</table>
+
+	<%= button_tag 'Add', class: "btn btn-primary", data: {toggle: 'modal', target: "#add"}%>
+</div>
+
+<div class = "modal fade" id = "add" role = "dialog">
+	<div class = "modal-dialog">
+		<div class = "modal-content">
+
+			<div class = "modal-header">
+				<h4>Add Job Level</h4>
+			</div>
+			<%= render 'form'%>
+
+		</div>
+	</div>
 </div>
 
 <div class = "modal fade" id = "edit" role = "dialog">
 	<div class = "modal-dialog">
 		<div class = "modal-content">
+
 			<div class = "modal-header">
 				<h4>Edit Job Level</h4>
 			</div>
-			<div class = "modal-body">
-				<%= render 'form'%>
-			</div>
+			
+			<%= render 'form'%>
+			
 		</div>
 	</div>
 </div>
