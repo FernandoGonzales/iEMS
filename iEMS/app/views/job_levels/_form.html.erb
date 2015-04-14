@@ -1,0 +1,20 @@
+<table class = "table">
+	<%= form_for @level do |f|%>
+	<tr>
+		<td>Rank: </td>
+		<td><%= f.text_field :rank%></td>
+	</tr>
+	<tr>
+		<td>Level: </td>
+		<td><%= f.text_field :level%></td>
+	</tr>
+	<tr>
+		<td>Grade: </td>
+		<td><%= f.text_field :grade%></td>
+	</tr>
+	<tr>
+		<td><%= f.submit 'Save', class: "btn btn-primary"%></td>
+		<td></td>
+	</tr>
+	<%end%>
+</table>

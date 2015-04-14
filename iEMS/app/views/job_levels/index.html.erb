@@ -10,7 +10,21 @@
 				<td><%= level.rank%></td>
 				<td><%= level.level%></td>
 				<td><%= level.grade%></td>
+				<td><a href="#edit" data-toggle = "modal">Edit</a></td>
 			</tr>
 		<%end%>
 	</table>
+</div>
+
+<div class = "modal fade" id = "edit" role = "dialog">
+	<div class = "modal-dialog">
+		<div class = "modal-content">
+			<div class = "modal-header">
+				<h4>Edit Job Level</h4>
+			</div>
+			<div class = "modal-body">
+				<%= render 'form'%>
+			</div>
+		</div>
+	</div>
 </div>
