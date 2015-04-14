@@ -43,6 +43,6 @@ class JobTitlesController < ApplicationController
 
 	private
 	def title_params
-		params.require(:jobTitle).permit(:title, :rank, :level, :grade, :description)
+		params.require(:jobTitle).permit(:title, :levelID, :description)
 	end
 end

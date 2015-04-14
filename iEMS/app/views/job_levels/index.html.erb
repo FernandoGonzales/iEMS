@@ -1,0 +1,16 @@
+<div class = "container">
+	<table class = "table">
+		<tr>
+			<th>Rank</th>
+			<th>Level</th>
+			<th>Grade</th>
+		</tr>
+		<%@levels.each do |level|%>
+			<tr>
+				<td><%= level.rank%></td>
+				<td><%= level.level%></td>
+				<td><%= level.grade%></td>
+			</tr>
+		<%end%>
+	</table>
+</div>

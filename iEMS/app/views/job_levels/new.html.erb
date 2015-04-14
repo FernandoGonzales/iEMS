@@ -1,0 +1,29 @@
+<div class = "container">
+	<h1>Add Job Level</h1>
+	<table class = "table">
+		<%= form_for :jobLevel, url: job_levels_path do |f|%>
+		<tr>
+			<td>Rank: </td>
+			<td><%= f.text_field :rank%></td>
+		</tr>
+		<tr>
+			<td>Level: </td>
+			<td><%= f.text_field :level%></td>
+		</tr>
+		<tr>
+			<td>Grade: </td>
+			<td><%= f.text_field :grade%></td>
+		</tr>
+		<tr>
+			<td><%= f.submit 'Add Job Level'%></td>
+			<td></td>
+		</tr>
+		<%end%>
+	</table>
+<br/><br/>
+	<%= @created%>
+	<!--<%if @created == true%>
+		<!--<%= button_to 'Job level successfully created', class: "alert alert-dissmisable alert-success" %>
+		wahahahaah
+	<%end%>-->
+</div>
