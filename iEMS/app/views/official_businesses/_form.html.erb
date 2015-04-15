@@ -1,0 +1,44 @@
+<%= form_for @officialBusiness, html: {class: "form-horizontal"} do |f|%>
+	<div class = "modal-body">
+		<div class = "form-group">
+			<%= label_tag(:client, "Client: ", class: "col-md-2 control-label")%>
+			<div class = "col-md-10">
+				<%= f.text_field(:client, class: "form-control") %>
+			</div>
+		</div>
+		<div class = "form-group">
+			<%= label_tag(:dateStart, "Date Start: ", class: "col-md-2 control-label")%>
+			<div class = "col-md-10">
+				<%= f.text_field(:dateStart, class: "form-control") %>
+			</div>
+		</div>
+		<div class = "form-group">
+			<%= label_tag(:dateEnd, "Date End: ", class: "col-md-2 control-label")%>
+			<div class = "col-md-10">
+				<%= f.text_field(:dateEnd, class: "form-control") %>
+			</div>
+		</div>
+		<div class = "form-group">
+			<%= label_tag(:timeDeparture, "Time Departure: ", class: "col-md-2 control-label")%>
+			<div class = "col-md-10">
+				<%= f.text_field(:timeDeparture, class: "form-control") %>
+			</div>
+		</div>
+		<div class = "form-group">
+			<%= label_tag(:timeArrival, "Time Arrival: ", class: "col-md-2 control-label")%>
+			<div class = "col-md-10">
+				<%= f.text_field(:timeArrival, class: "form-control") %>
+			</div>
+		</div>
+		<div class = "form-group">
+			<%= label_tag(:timeDuration, "Time Duration: ", class: "col-md-2 control-label")%>
+			<div class = "col-md-10">
+				<%= f.text_field(:timeDuration, class: "form-control") %>
+			</div>
+		</div>
+	</div>
+
+	<div class = "modal-footer">
+		<%= f.submit 'Save', class: "btn btn-primary"%>
+	</div>
+<%end%>
