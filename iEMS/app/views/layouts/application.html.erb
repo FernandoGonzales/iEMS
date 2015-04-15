@@ -7,36 +7,21 @@
 	</head>
 	<body>
 		<%= render 'navbar'%>
-		<!--<% if $noticeS.nil? == false %>
-		<div class = "container">
-			<div class = "alert alert-success alert-dismissable">
-				<button type = "button" class = "close" data-dismiss = "alert">&times;</button>
-				<%= $noticeS%>
+		<%if notice.nil? == false%>
+			<div class = "container">
+				<%if notice.split(":").first == "SUCCESS" %>
+					<div class = "alert alert-success alert-dismissable">
+						<button type = "button" class = "close" data-dismiss = "alert">&times;</button>
+						<%= notice.split(":").last%>
+					</div>
+				<% else %>
+					<div class = "alert alert-danger alert-dismissable">
+						<button type = "button" class = "close" data-dismiss = "alert">&times;</button>
+						<%= notice.split(":").last%>
+					</div>
+				<% end %>
 			</div>
-		</div>
-		<% end %>
-		<% if $noticeD.nil? == false %>
-		<div class = "container">
-			<div class = "alert alert-danger alert-dismissable">
-				<button type = "button" class = "close" data-dismiss = "alert">&times;</button>
-				<%= $noticeD%>
-			</div>
-		</div>
-		<% end %>-->
-		<div class = "container">
-			<% 	
-				if notice.split(":").first == "SUCCESS" %>
-				<div class = "alert alert-success alert-dismissable">
-					<button type = "button" class = "close" data-dismiss = "alert">&times;</button>
-					<%= notice.split(":").last%>
-				</div>
-			<% else %>
-				<div class = "alert alert-danger alert-dismissable">
-					<button type = "button" class = "close" data-dismiss = "alert">&times;</button>
-					<%= notice.split(":").last%>
-				</div>
-			<% end %>
-		</div>
+		<%end%>
 		<%= yield %>
 		<%= javascript_include_tag 'jquery-1.11.2.min', 'data-turbolinks-track' => true %>
 		<%= javascript_include_tag 'bootstrap', 'data-turbolinks-track' => true %>
