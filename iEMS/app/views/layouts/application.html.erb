@@ -25,15 +25,15 @@
 		<% end %>-->
 		<div class = "container">
 			<% 	
-				if notice.split(":").first == "SUCCESS" %>
+				if notice.try(:split, ":").try(:first) == "SUCCESS" %>
 				<div class = "alert alert-success alert-dismissable">
 					<button type = "button" class = "close" data-dismiss = "alert">&times;</button>
-					<%= notice.split(":").last%>
+					<%= notice.try(:split, ":").try(:last)%>
 				</div>
 			<% else %>
 				<div class = "alert alert-danger alert-dismissable">
 					<button type = "button" class = "close" data-dismiss = "alert">&times;</button>
-					<%= notice.split(":").last%>
+					<%= notice.try(:split, ":").try(:last)%>
 				</div>
 			<% end %>
 		</div>

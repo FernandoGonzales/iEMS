@@ -24,7 +24,7 @@ class OfficialBusinessesController < ApplicationController
 		if @officialBusiness.update(level_params)
 			redirect_to official_businesses_path, notice: 'SUCCESS:Update success!'
 		else
-			render 'edit', notice: 'FAILED:Update failed'
+			redirect_to official_businesses_path, notice: 'FAILED:Update failed'
 		end
 	end
 
