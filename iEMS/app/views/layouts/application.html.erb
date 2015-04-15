@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<%#= render 'navbar'%>
-		<%if notice.nil? == false%>
+		<!--<%if notice.nil? == false%>
 			<div class = "container">
 				<%if notice.split(":").first == "SUCCESS" %>
 					<div class = "alert alert-success alert-dismissable">
@@ -21,7 +21,7 @@
 					</div>
 				<% end %>
 			</div>
-		<%end%>
+		<%end%>-->
 		<%= yield %>
 		<%= javascript_include_tag 'jquery-1.11.2.min', 'data-turbolinks-track' => true %>
 		<%= javascript_include_tag 'bootstrap', 'data-turbolinks-track' => true %>
