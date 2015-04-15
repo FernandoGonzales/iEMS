@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: MyString
+  dateStart: MyString
+  dateEnd: MyString
+  timeDeparture: MyString
+  timeArrival: MyString
+  timeDuration: 1
+
+two:
+  client: MyString
+  dateStart: MyString
+  dateEnd: MyString
+  timeDeparture: MyString
+  timeArrival: MyString
+  timeDuration: 1

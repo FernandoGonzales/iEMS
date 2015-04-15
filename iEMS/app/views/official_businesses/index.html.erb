@@ -1,0 +1,55 @@
+<div class = "container">
+	<table class = "table">
+		<tr>
+			<th>Client</th>
+			<th>Date Start</th>
+			<th>Date End</th>
+			<th>Time Departure</th>
+			<th>Time Arrival</th>
+			<th>Time Duration</th>
+			<th></th>
+			<th></th>
+		</tr>
+		<%@officialBusinesses.each do |officialBusiness|%>
+			<tr>
+				<td><%= officialBusiness.client%></td>
+				<td><%= officialBusiness.dateStart%></td>
+				<td><%= officialBusiness.dateEnd%></td>
+				<td><%= officialBusiness.timeDeparture%></td>
+				<td><%= officialBusiness.timeArrival%></td>
+				<td><%= officialBusiness.timeDuration%></td>
+				<td><%= button_tag 'Edit', class: "btn btn-primary", data: {toggle: 'modal', target: "#edit"}%></td>
+				<td><%= button_to 'Delete', official_business_path(officialBusiness), method: :delete, onclick: "return confirm('Are you sure you would like to delete Official Business #{officialBusiness.client} on #{officialBusiness.dateStart} to #{officialBusiness.dateEnd}?')", class: "btn btn-primary"%></td>
+			</tr>
+		<%end%>
+	</table>
+
+	<%= button_tag 'Add', class: "btn btn-primary", data: {toggle: 'modal', target: "#add"}%>
+</div>
+
+<div class = "modal fade" id = "add" role = "dialog">
+	<div class = "modal-dialog">
+		<div class = "modal-content">
+
+			<div class = "modal-header">
+				<h4>Add Official Business</h4>
+			</div>
+			<%= render 'form'%>
+
+		</div>
+	</div>
+</div>
+
+<div class = "modal fade" id = "edit" role = "dialog">
+	<div class = "modal-dialog">
+		<div class = "modal-content">
+
+			<div class = "modal-header">
+				<h4>Edit Official Business</h4>
+			</div>
+			
+			<%= render 'form'%>
+			
+		</div>
+	</div>
+</div>
