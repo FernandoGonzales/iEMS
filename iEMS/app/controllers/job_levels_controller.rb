@@ -20,9 +20,9 @@ class JobLevelsController < ApplicationController
 		@jobLevel = JobLevel.new(level_params)
 
 		if @jobLevel.save
-			redirect_to job_levels_path, notice: 'Job level has been added successfully!'
+			redirect_to job_levels_path, notice: 'SUCCESS:Job level has been added successfully!'
 		else
-			render 'new', notice: 'Adding of new job level failed.'
+			render 'new', notice: 'FAILED:Adding of new job level failed.'
 		end
 	end
 
@@ -30,16 +30,16 @@ class JobLevelsController < ApplicationController
 		@jobLevel = JobLevel.find(params[:id])
 
 		if @jobLevel.update(level_params)
-			redirect_to job_levels_path, notice: 'Update success!'
+			redirect_to job_levels_path, notice: 'SUCCESS:Update success!'
 		else
-			render 'edit', notice: 'Update failed'
+			render 'edit', notice: 'FAILED:Update failed'
 		end
 	end
 
 	def destroy
 		@jobLevel = JobLevel.find(params[:id])
 		@jobLevel.destroy
-		redirect_to job_levels_path, notice: 'Job Level deleted!'
+		redirect_to job_levels_path, notice: 'SUCCESS:Job Level deleted!'
 	end
 
 	private

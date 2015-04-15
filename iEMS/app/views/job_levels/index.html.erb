@@ -12,7 +12,7 @@
 				<td><%= jobLevel.rank%></td>
 				<td><%= jobLevel.level%></td>
 				<td><%= jobLevel.grade%></td>
-				<td><%= button_tag 'Edit', class: "btn btn-primary", data: {toggle: 'modal', target: "#edit"}%></td>
+				<td><%= button_tag 'Edit', class: "btn btn-primary", data: {toggle: 'modal', target: "#edit"}%><!--, html_options: {params: toEdit = jobLevel.id}--></td>
 				<td><%= button_to 'Delete', job_level_path(jobLevel), method: :delete, onclick: "return confirm('Are you sure you would like to delete Job Level #{jobLevel.rank} - Level: #{jobLevel.level} Grade: #{jobLevel.grade}')", class: "btn btn-primary"%></td>
 			</tr>
 		<%end%>
@@ -37,7 +37,7 @@
 <div class = "modal fade" id = "edit" role = "dialog">
 	<div class = "modal-dialog">
 		<div class = "modal-content">
-
+			<%#@jobLevel = JobLevel.find(params[:toEdit])%>
 			<div class = "modal-header">
 				<h4>Edit Job Level</h4>
 			</div>
