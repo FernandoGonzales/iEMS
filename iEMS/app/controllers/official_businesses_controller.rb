@@ -34,6 +34,6 @@ class OfficialBusinessesController < ApplicationController
 		redirect_to official_businesses_path, notice: 'SUCCESS:Official Business deleted!'
 	end
 	def official_business_params
-		params.require(:official_business).permit(:client, :dateStart, :dateEnd, :timeDeparture, :timeArrival, :timeDuration)
+		params.require(:official_business).permit(:requestType, :dateFiled, :description, :client, :datetimeDeparture,  :datetimeArrival, :timeDuration)
 	end
 end

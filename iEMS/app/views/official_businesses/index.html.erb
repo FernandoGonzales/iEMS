@@ -1,30 +1,39 @@
 <div class = "container">
-	<table class = "table">
-		<tr>
-			<th>Client</th>
-			<th>Date Start</th>
-			<th>Date End</th>
-			<th>Time Departure</th>
-			<th>Time Arrival</th>
-			<th>Time Duration</th>
-			<th></th>
-			<th></th>
-		</tr>
+	<%= button_tag 'Add', class: "btn btn-primary pull-right", data: {toggle: 'modal', target: "#add"}, style: ""%>
+	<table id="table_id">
+		<thead>
+			<tr>
+				<th>Type</th>
+				<th>Date Filed</th>
+				<th>Description</th>
+				<th>Status</th>
+				<th>Client</th>
+				<th>Departure</th>
+				<th>Arrival</th>
+				<th>Time Duration</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
 		<%@officialBusinesses.each do |officialBusiness|%>
 			<tr>
+				<td><%= officialBusiness.requestType%></td>
+				<td><%= officialBusiness.dateFiled%></td>
+				<td><%= officialBusiness.description%></td>
+				<td><%= officialBusiness.status%></td>
 				<td><%= officialBusiness.client%></td>
-				<td><%= officialBusiness.dateStart%></td>
-				<td><%= officialBusiness.dateEnd%></td>
-				<td><%= officialBusiness.timeDeparture%></td>
-				<td><%= officialBusiness.timeArrival%></td>
+				<td><%= officialBusiness.datetimeDeparture%></td>
+				<td><%= officialBusiness.datetimeArrival%></td>
 				<td><%= officialBusiness.timeDuration%></td>
-				<td><%= button_tag 'Edit', class: "btn btn-primary", data: {toggle: 'modal', target: "#edit"}%></td>
-				<td><%= button_to 'Delete', official_business_path(officialBusiness), method: :delete, onclick: "return confirm('Are you sure you would like to delete Official Business #{officialBusiness.client} on #{officialBusiness.dateStart} to #{officialBusiness.dateEnd}?')", class: "btn btn-primary"%></td>
-			</tr>
-		<%end%>
+				<td><%= button_tag 'Edit', class: "btn btn-warning", data: {toggle: 'modal', target: "#edit"}%></td>
+				<td><%= button_to 'Delete', official_business_path(officialBusiness), method: :delete, onclick: "return confirm('Are you sure you would like to delete Official Business #{officialBusiness.client} on #{officialBusiness.datetimeDeparture} to #{officialBusiness.datetimeArrival}?')", class: "btn btn-danger"%></td>
+				</tr>
+			<%end%>
+		</tbody>
 	</table>
 
-	<%= button_tag 'Add', class: "btn btn-primary", data: {toggle: 'modal', target: "#add"}%>
+	
 </div>
 
 <div class = "modal fade" id = "add" role = "dialog">
@@ -53,3 +62,9 @@
 		</div>
 	</div>
 </div>
+
+<script>
+  $(function(){
+    $("#table_id").dataTable();
+  })
+</script>

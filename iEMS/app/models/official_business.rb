@@ -1,3 +1,3 @@
 class OfficialBusiness < ActiveRecord::Base
-	validates :client, :dateStart, :dateEnd, :timeDeparture, :timeArrival, :timeDuration, :presence => true
+	validates :requestType, :dateFiled, :description, :client, :datetimeDeparture, :datetimeArrival, :timeDuration, :presence => true
 end

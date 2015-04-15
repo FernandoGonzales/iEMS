@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   #resources :jobtitles
-  resources :job_levels
+  resources :job_levels do
+    resources :job_titles
+  end
   resources :official_businesses
   root 'welcome#index'
 

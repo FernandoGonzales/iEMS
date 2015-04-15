@@ -1,6 +1,23 @@
 class JobLevelsController < ApplicationController
 	def index
-		@jobLevels = JobLevel.all
+		#sortBy: 'level'
+		sortBy = params[:sortBy]
+
+		puts "======"
+		puts sortBy
+		puts "======"
+		
+		case sortBy
+		#when 'level'
+		#	@jobLevels = JobLevel.all.sort_by {|j| [j.level, j.grade, j.rank]}
+		when 'grade'
+			@jobLevels = JobLevel.all.sort_by {|j| [Integer(j.grade), Integer(j.level), j.rank]}
+		when 'rank'
+			@jobLevels = JobLevel.all.sort_by {|j| [j.rank, Integer(j.level), Integer(j.grade)]}
+		else
+			@jobLevels = JobLevel.all.sort_by {|j| [Integer(j.level), Integer(j.grade), j.rank]}
+		end
+		puts sortBy
 		@jobLevel = JobLevel.new
 	end
 
@@ -22,7 +39,7 @@ class JobLevelsController < ApplicationController
 		if @jobLevel.save
 			redirect_to job_levels_path, notice: 'SUCCESS:Job level has been added successfully!'
 		else
-			render 'new', notice: 'FAILED:Adding of new job level failed.'
+			redirect_to job_levels_path, notice: 'FAILED:Adding of new job level failed.'
 		end
 	end
 
@@ -32,7 +49,7 @@ class JobLevelsController < ApplicationController
 		if @jobLevel.update(level_params)
 			redirect_to job_levels_path, notice: 'SUCCESS:Update success!'
 		else
-			render 'edit', notice: 'FAILED:Update failed'
+			redirect_to job_levels_path, notice: 'FAILED:Update failed'
 		end
 	end
 

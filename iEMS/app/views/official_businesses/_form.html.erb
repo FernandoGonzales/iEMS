@@ -1,43 +1,42 @@
 <%= form_for @officialBusiness, html: {class: "form-horizontal"} do |f|%>
 	<div class = "modal-body">
 		<div class = "form-group">
-			<%= label_tag(:client, "Client: ", class: "col-md-3 control-label")%>
+			<%= label_tag(:requestType, "Request Type: ", class: "col-md-4 control-label")%>
+			<div class = "col-md-8">
+				<%= f.text_field(:requestType, class: "form-control") %>
+			</div>
+		</div>
+		<div class = "form-group">
+			<%= label_tag(:dateFiled, "Date Filed: ", class: "col-md-4 control-label")%>
+			<div class = "col-md-8">
+				<%= f.date_select(:dateFiled, class: "form-control") %>
+			</div>
+		</div>
+		<div class = "form-group">
+			<%= label_tag(:description, "Description: ", class: "col-md-4 control-label")%>
+			<div class = "col-md-8">
+				<%= f.text_field(:description, class: "form-control") %>
+			</div>
+		</div>
+		<div class = "form-group">
+			<%= label_tag(:client, "Client: ", class: "col-md-4 control-label")%>
 			<div class = "col-md-8">
 				<%= f.text_field(:client, class: "form-control") %>
 			</div>
 		</div>
 		<div class = "form-group">
-			<%= label_tag(:dateStart, "Date Start: ", class: "col-md-3 control-label")%>
+			<%= label_tag(:datetimeDeparture, "Departure: ", class: "col-md-4 control-label")%>
 			<div class = "col-md-8">
-				<%= f.text_field(:dateStart, class: "form-control") %>
+				<%= f.datetime_select(:datetimeDeparture, class: "form-control") %>
 			</div>
 		</div>
 		<div class = "form-group">
-			<%= label_tag(:dateEnd, "Date End: ", class: "col-md-3 control-label")%>
+			<%= label_tag(:datetimeArrival, "Arrival: ", class: "col-md-4 control-label")%>
 			<div class = "col-md-8">
-				<%= f.text_field(:dateEnd, class: "form-control") %>
-			</div>
-		</div>
-		<div class = "form-group">
-			<%= label_tag(:timeDeparture, "Time Departure: ", class: "col-md-3 control-label")%>
-			<div class = "col-md-8">
-				<%= f.text_field(:timeDeparture, class: "form-control") %>
-			</div>
-		</div>
-		<div class = "form-group">
-			<%= label_tag(:timeArrival, "Time Arrival: ", class: "col-md-3 control-label")%>
-			<div class = "col-md-8">
-				<%= f.text_field(:timeArrival, class: "form-control") %>
-			</div>
-		</div>
-		<div class = "form-group">
-			<%= label_tag(:timeDuration, "Time Duration: ", class: "col-md-3 control-label")%>
-			<div class = "col-md-8">
-				<%= f.text_field(:timeDuration, class: "form-control") %>
+				<%= f.datetime_select(:datetimeArrival, class: "form-control") %>
 			</div>
 		</div>
 	</div>
-
 	<div class = "modal-footer">
 		<%= f.submit 'Save', class: "btn btn-primary"%>
 	</div>

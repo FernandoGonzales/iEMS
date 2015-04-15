@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150414075548) do
+
+ActiveRecord::Schema.define(version: 20150415070257) do
+
 
   create_table "job_levels", force: :cascade do |t|
     t.string   "rank"
@@ -19,6 +21,30 @@ ActiveRecord::Schema.define(version: 20150414075548) do
     t.string   "grade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "job_titles", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "date_created"
+    t.text     "description"
+    t.integer  "jobLevel_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "job_titles", ["jobLevel_id"], name: "index_job_titles_on_jobLevel_id"
+
+  create_table "official_businesses", force: :cascade do |t|
+    t.string   "client"
+    t.integer  "timeDuration"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.text     "description"
+    t.string   "requestType"
+    t.string   "status"
+    t.datetime "datetimeDeparture"
+    t.datetime "datetimeArrival"
+    t.date     "dateFiled"
   end
 
 end
