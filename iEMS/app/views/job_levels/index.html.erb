@@ -1,9 +1,13 @@
+<%= render 'navbar'%>
 <div class = "container">
 	<table class = "table">
 		<tr>
-			<th>Rank</th>
+			<!--<th>Rank</th>
 			<th>Level</th>
-			<th>Grade</th>
+			<th>Grade</th>-->
+			<th><%= link_to 'Rank', job_levels_path(sortBy: "rank"), class: "btn btn-primary"%></th>
+			<th><%= link_to 'Level', job_levels_path(sortBy: "level"), class: "btn btn-primary"%></th>
+			<th><%= link_to 'Grade', job_levels_path(sortBy: "grade"), class: "btn btn-primary"%></th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -12,7 +16,7 @@
 				<td><%= jobLevel.rank%></td>
 				<td><%= jobLevel.level%></td>
 				<td><%= jobLevel.grade%></td>
-				<td><%= button_tag 'Edit', class: "btn btn-primary", data: {toggle: 'modal', target: "#edit"}%></td>
+				<td><%= button_tag 'Edit', data: {toggle: 'modal', target: "#edit", remote: edit_job_level_path(jobLevel) << "#modal-edit-fields"}, class: "btn btn-primary"%></td>
 				<td><%= button_to 'Delete', job_level_path(jobLevel), method: :delete, onclick: "return confirm('Are you sure you would like to delete Job Level #{jobLevel.rank} - Level: #{jobLevel.level} Grade: #{jobLevel.grade}')", class: "btn btn-primary"%></td>
 			</tr>
 		<%end%>
@@ -36,13 +40,8 @@
 
 <div class = "modal fade" id = "edit" role = "dialog">
 	<div class = "modal-dialog">
-		<div class = "modal-content">
+		<div class = "modal-content">	
 			
-			<div class = "modal-header">
-				<h4>Edit Job Level</h4>
-			</div>
-			
-			<%= render 'form'%>
 			
 		</div>
 	</div>

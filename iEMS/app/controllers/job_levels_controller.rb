@@ -1,6 +1,23 @@
 class JobLevelsController < ApplicationController
 	def index
-		@jobLevels = JobLevel.all
+		#sortBy: 'level'
+		sortBy = params[:sortBy]
+
+		puts "======"
+		puts sortBy
+		puts "======"
+		
+		case sortBy
+		when 'level'
+			@jobLevels = JobLevel.all.sort_by {|j| [j.level, j.grade, j.rank]}
+		when 'grade'
+			@jobLevels = JobLevel.all.sort_by {|j| [j.grade, j.level, j.rank]}
+		when 'rank'
+			@jobLevels = JobLevel.all.sort_by {|j| [j.rank, j.level, j.grade]}
+		else
+			@jobLevels = JobLevel.all.sort_by {|j| [j.level, j.grade, j.rank]}
+		end
+		puts sortBy
 		@jobLevel = JobLevel.new
 	end
 
