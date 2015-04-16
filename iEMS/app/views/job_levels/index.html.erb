@@ -6,8 +6,8 @@
 
 	<!-- Add button -->
 	<!-- Pressing the button will cause a modal/pop-up (add modal) to appear -->
-	<%= button_tag 'Add', class: "btn btn-primary pull-right", data: {toggle: 'modal', target: "#add"}%>
-	
+	<%#= button_tag 'Add', class: "btn btn-primary pull-right", data: {toggle: 'modal', target: "#add"}%>
+	<%= link_to 'Create New Job Level', new_job_level_path, class: "btn btn-primary pull-right", data: {toggle: 'modal', target: '#add'}%>
 	<!-- Start of the table -->
 	<!-- Data Table was used to format the table and add the sort & search features -->
 	<table id = "table_id">
@@ -32,8 +32,8 @@
 					<!-- Edit button -->
 					<!-- Pressing the button will cause a modal/pop-up (edit modal) to appear -->
 					<!-- Passes the job level parameters with the attribute "remote" to edit.html.erb which renders the form -->
-					<td><%= button_tag 'Edit', data: {toggle: 'modal', target: "#edit", remote: edit_job_level_path(jobLevel) << "#modal-edit-fields"}, class: "btn btn-warning"%></td>
-
+					<td><%#= button_tag 'Edit', data: {toggle: 'modal', target: "#edit", remote: edit_job_level_path(jobLevel) << "#modal-edit-fields"}, class: "btn btn-warning"%>
+						<%= link_to 'Edit', edit_job_level_path(jobLevel), class: "btn btn-warning", data: {toggle: 'modal', target: '#edit'}%></td>
 					<!-- Delete button -->
 					<!-- Pressing the button will cause the system to ask the user for confirmation -->
 					<!-- Once the intent ot delete the job level is confirmed, the job level will be deleted from the database -->
@@ -74,7 +74,7 @@
 <script>
   $(function(){
     $("#table_id").dataTable({
-    	"aaSorting": [[ 1, "asc" ]]
+    	"aaSorting": [[ 1, "asc" ], [2, "asc"]]
     });
   })
 </script>
