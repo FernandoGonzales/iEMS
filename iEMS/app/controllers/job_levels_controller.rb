@@ -32,7 +32,7 @@ class JobLevelsController < ApplicationController
 		if @jobLevel.update(level_params)
 			redirect_to job_levels_path, notice: 'SUCCESS:Update success!'
 		else
-			redirect_to job_levels_path, notice: 'FAILED:Update failed'
+			redirect_to job_levels_path, notice: 'FAILED:Update failed.'
 		end
 	end
 

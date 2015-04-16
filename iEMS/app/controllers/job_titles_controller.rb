@@ -1,6 +1,7 @@
 class JobTitlesController < ApplicationController
 	def index
 		@jobTitles = JobTitle.all
+		@jobTitle = JobTitle.new
 	end
 
 	def show
@@ -19,9 +20,9 @@ class JobTitlesController < ApplicationController
 		@jobTitle = JobTitle.new(title_params)
 
 		if @jobTitle.save
-			redirect_to @jobTitle
+			redirect_to job_level_job_titles_path, notice: 'SUCCESS:Job title has been added successfully!'
 		else
-			render 'new'
+			redirect_to job_level_job_titles_path, notice: 'FAILED:Adding of new job title failed.'
 		end
 	end
 
@@ -29,16 +30,16 @@ class JobTitlesController < ApplicationController
 		@jobTitle = JobTitle.find(params[:id])
 	
 		if @jobTitle.update(title_params)
-			redirect_to @jobTitle
+			redirect_to job_level_job_titles_path, notice: 'SUCCESS:Update success!'
 		else
-			render 'edit' jobTitles_path
+			redirect_to job_level_job_titles_path, notice: 'FAILED:Update failed.!'
 		end
 	end
 
 	def destroy
 		@jobTitle = JobTitle.find(params[:id])
 		@jobTitle.destroy
-		redirect_to 
+		redirect_to job_level_job_titles_path, notice: 'SUCCESS:Job title deleted!'
 	end
 
 	private
