@@ -1,23 +1,24 @@
 class JobLevelsController < ApplicationController
 	def index
 		#sortBy: 'level'
-		sortBy = params[:sortBy]
+		#sortBy = params[:sortBy]
 
-		puts "======"
-		puts sortBy
-		puts "======"
+		#puts "======"
+		#puts sortBy
+		#puts "======"
 		
-		case sortBy
+		#case sortBy
 		#when 'level'
 		#	@jobLevels = JobLevel.all.sort_by {|j| [j.level, j.grade, j.rank]}
-		when 'grade'
-			@jobLevels = JobLevel.all.sort_by {|j| [Integer(j.grade), Integer(j.level), j.rank]}
-		when 'rank'
-			@jobLevels = JobLevel.all.sort_by {|j| [j.rank, Integer(j.level), Integer(j.grade)]}
-		else
-			@jobLevels = JobLevel.all.sort_by {|j| [Integer(j.level), Integer(j.grade), j.rank]}
-		end
-		puts sortBy
+		#when 'grade'
+		#	@jobLevels = JobLevel.all.sort_by {|j| [Integer(j.grade), Integer(j.level), j.rank]}
+		#when 'rank'
+		#	@jobLevels = JobLevel.all.sort_by {|j| [j.rank, Integer(j.level), Integer(j.grade)]}
+		#else
+		#	@jobLevels = JobLevel.all.sort_by {|j| [Integer(j.level), Integer(j.grade), j.rank]}
+		#end
+		#puts sortBy
+		@jobLevels = JobLevel.all#.sort_by {|j| [Integer(j.level), Integer(j.grade), j.rank]}
 		@jobLevel = JobLevel.new
 	end
 
@@ -40,6 +41,7 @@ class JobLevelsController < ApplicationController
 			redirect_to job_levels_path, notice: 'SUCCESS:Job level has been added successfully!'
 		else
 			redirect_to job_levels_path, notice: 'FAILED:Adding of new job level failed.'
+			#render 'index', notice: 'FAILED:Adding of new job level failed.'
 		end
 	end
 
