@@ -1,2 +1,0 @@
-jQuery ->
-        $('#products').dataTable()
