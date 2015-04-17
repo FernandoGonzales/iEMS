@@ -25,7 +25,7 @@
 					<td><%= jobTitle.title%></td>
 					<td><%= jobTitle.description%></td>
 					<td>
-						<div class = "col-md-1"></div>
+						<div class = "col-md-2"></div>
 						<%= link_to 'Edit', edit_job_title_path(jobTitle), class: "btn btn-xs btn-warning col-md-4", data: {toggle: "modal", target: "#edit"}%>
 						<div class = "col-md-1"></div>
 						<%= button_to 'Delete', job_title_path(jobTitle), method: :delete, onclick: "return confirm('Are you sure you would like to delete Job Title: #{jobTitle.title}?')", class: "btn btn-xs btn-danger col-md-4"%>
@@ -38,17 +38,13 @@
 
 <div class = "modal fade" id = "add" role = "dialog">
 	<div class = "modal-dialog">
-		<div class = "modal-content">
-
-		</div>
+		<div class = "modal-content"></div>
 	</div>
 </div>
 
 <div class = "modal fade" id = "edit" role = "dialog">
 	<div class = "modal-dialog">
-		<div class = "modal-content">
-
-		</div>
+		<div class = "modal-content"></div>
 	</div>
 </div>
 

@@ -1,9 +1,9 @@
-class CreateBusinessUnits < ActiveRecord::Migration
+class ChangeColumnsForBusinessUnits < ActiveRecord::Migration
   def change
-    create_table :business_units do |t|
+  	create_table :business_units do |t|
       t.string :name
+      t.integer :manager_id
       t.integer :supervisor_id
-      t.integer :report_to
       t.integer :oic
       t.text :description
 

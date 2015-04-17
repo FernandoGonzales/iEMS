@@ -1,0 +1,44 @@
+<%= render 'navbar'%>
+<%= render 'noticeAlert'%>
+
+<div class = "container">
+	<div class = "row">
+		<div class = "col-md-6">
+			<h1>Business Units</h1>
+		</div>
+		<div class = "col-md-6">
+			<%= link_to 'Create New Business Unit', new_business_unit_path, class: "btn btn-primary pull-right", data: {toggle: "modal", target: "#add"}%>
+		</div>
+	</div>
+
+	<table id = "table_id">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Manager</th>
+				<th>Supervisor</th>
+				<th>Officer In Charged</th>
+			</tr>
+		</thead>
+	</table>
+</div>
+
+<!-- Modal for the addition of new company -->
+<div class = "modal fade" id = "add" role = "dialog">
+	<div class = "modal-dialog">
+		<div class = "modal-content"></div>
+	</div>
+</div>
+
+<!-- Modal for the editing of a company -->
+<div class = "modal fade" id = "edit" role = "dialog">
+	<div class = "modal-dialog">
+		<div class = "modal-content"></div>
+	</div>
+</div>
+
+<script>
+  $(function(){
+    $("#table_id").dataTable();
+  })
+</script>

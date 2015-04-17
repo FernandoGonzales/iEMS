@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417030200) do
+ActiveRecord::Schema.define(version: 20150417044635) do
 
   create_table "business_units", force: :cascade do |t|
     t.string   "name"
+    t.integer  "manager_id"
     t.integer  "supervisor_id"
-    t.integer  "report_to"
     t.integer  "oic"
     t.text     "description"
     t.datetime "created_at",    null: false
