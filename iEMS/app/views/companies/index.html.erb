@@ -28,9 +28,9 @@
 						<td><%= company.add_zip%></td>
 						<td><%= company.num%></td>
 						<td>
-							<div class = "col-md-1"></div>
+							<!--<div class = "col-md-1"></div>-->
 							<%= link_to 'Edit', edit_company_path(company), class: "btn btn-xs btn-warning col-md-4", data: {toggle: 'modal', target: '#edit'}%>
-							<div class = "col-md-1"></div>
+							<div class = "col-md-2"></div>
 
 							<%= button_to 'Delete', company_path(company), method: :delete, onclick: "return confirm('Are you sure you would like to delete Company: #{company.name}?')", class: "btn btn-xs btn-danger col-md-4"%>
 						</td>
