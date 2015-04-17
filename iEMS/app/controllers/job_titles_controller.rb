@@ -1,4 +1,5 @@
 class JobTitlesController < ApplicationController
+
 	def index
 		@jobTitles = JobTitle.all
 	end
@@ -16,12 +17,13 @@ class JobTitlesController < ApplicationController
 	end
 
 	def create
+	
 		@jobTitle = JobTitle.new(title_params)
 
 		if @jobTitle.save
-			redirect_to @jobTitle
+			redirect_to job_titles_path, notice: 'SUCCESS:Job title has been added successfully!'
 		else
-			render 'new'
+			redirect_to job_titles_path, notice: 'FAILED:Adding of new job title failed.'
 		end
 	end
 
@@ -29,20 +31,20 @@ class JobTitlesController < ApplicationController
 		@jobTitle = JobTitle.find(params[:id])
 	
 		if @jobTitle.update(title_params)
-			redirect_to @jobTitle
+			redirect_to job_titles_path, notice: 'SUCCESS:Update success!'
 		else
-			render 'edit' jobTitles_path
+			redirect_to job_titles_path, notice: 'FAILED:Update failed.!'
 		end
 	end
 
 	def destroy
 		@jobTitle = JobTitle.find(params[:id])
 		@jobTitle.destroy
-		redirect_to 
+		redirect_to job_titles_path, notice: 'SUCCESS:Job title deleted!'
 	end
 
 	private
 	def title_params
-		params.require(:jobTitle).permit(:title, :levelID, :description)
+		params.require(:job_title).permit(:title, :description)
 	end
 end

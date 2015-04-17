@@ -2,12 +2,17 @@
 <%= render 'noticeAlert'%>
 
 <div class = "container">
-	<h1>Job Levels</h1> <!-- Name of page -->
-
-	<!-- Add button -->
-	<!-- Pressing the button will cause a modal/pop-up (add modal) to appear -->
-	<%#= button_tag 'Add', class: "btn btn-primary pull-right", data: {toggle: 'modal', target: "#add"}%>
-	<%= link_to 'Create New Job Level', new_job_level_path, class: "btn btn-primary pull-right", data: {toggle: 'modal', target: '#add'}%>
+	<div class = "row">
+		<div class = "col-md-6">
+			<h1>Job Levels</h1> <!-- Name of page -->
+		</div>
+		<div class = "col-md-6">
+			<!-- Add button -->
+			<!-- Pressing the button will cause a modal/pop-up (add modal) to appear -->
+			<%= link_to 'Create New Job Level', new_job_level_path, class: "btn btn-primary pull-right", data: {toggle: 'modal', target: '#add'}%>
+		</div>
+	</div>
+		
 	<!-- Start of the table -->
 	<!-- Data Table was used to format the table and add the sort & search features -->
 	<table id = "table_id">
@@ -16,9 +21,7 @@
 				<th>Rank</th>
 				<th>Level</th>
 				<th>Grade</th>
-				<!-- Two blank column headings for the buttons Edit and Delete -->
-				<th></th>
-				<th></th>
+				<th>Actions</th>
 			</tr>
 		</thead>
 
@@ -32,12 +35,17 @@
 					<!-- Edit button -->
 					<!-- Pressing the button will cause a modal/pop-up (edit modal) to appear -->
 					<!-- Passes the job level parameters with the attribute "remote" to edit.html.erb which renders the form -->
-					<td><%#= button_tag 'Edit', data: {toggle: 'modal', target: "#edit", remote: edit_job_level_path(jobLevel) << "#modal-edit-fields"}, class: "btn btn-warning"%>
-						<%= link_to 'Edit', edit_job_level_path(jobLevel), class: "btn btn-warning", data: {toggle: 'modal', target: '#edit'}%></td>
+					<td>
+						<div class = "col-md-1"></div>
+						<%= link_to 'Edit', edit_job_level_path(jobLevel), class: "btn btn-xs btn-warning col-md-4", data: {toggle: 'modal', target: '#edit'}%>
+						<div class = "col-md-1"></div>
+
+						<%= button_to 'Delete', job_level_path(jobLevel), method: :delete, onclick: "return confirm('Are you sure you would like to delete Job Level #{jobLevel.rank} - Level: #{jobLevel.level} Grade: #{jobLevel.grade}')", class: "btn btn-xs btn-danger col-md-4"%>
 					<!-- Delete button -->
 					<!-- Pressing the button will cause the system to ask the user for confirmation -->
 					<!-- Once the intent ot delete the job level is confirmed, the job level will be deleted from the database -->
-					<td><%= button_to 'Delete', job_level_path(jobLevel), method: :delete, onclick: "return confirm('Are you sure you would like to delete Job Level #{jobLevel.rank} - Level: #{jobLevel.level} Grade: #{jobLevel.grade}')", class: "btn btn-danger"%></td>
+											
+					</td>
 				</tr>
 			<%end%>
 
@@ -48,24 +56,14 @@
 <!-- Modal for the addition of new job level -->
 <div class = "modal fade" id = "add" role = "dialog">
 	<div class = "modal-dialog">
-		<div class = "modal-content">
-
-			<div class = "modal-header">
-				<h4>Add Job Level</h4>
-			</div>
-			<%= render 'form'%>
-
-		</div>
+		<div class = "modal-content"></div>
 	</div>
 </div>
 
 <!-- Modal for the editing of job level -->
 <div class = "modal fade" id = "edit" role = "dialog">
 	<div class = "modal-dialog">
-		<div class = "modal-content">	
-			
-			
-		</div>
+		<div class = "modal-content"></div>
 	</div>
 </div>
 
@@ -74,7 +72,7 @@
 <script>
   $(function(){
     $("#table_id").dataTable({
-    	"aaSorting": [[ 1, "asc" ], [2, "asc"]]
+    	"aaSorting": [[ 2, "asc" ], [3, "asc"]]
     });
   })
 </script>

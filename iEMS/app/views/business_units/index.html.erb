@@ -1,0 +1,66 @@
+<%= render 'navbar'%>
+<%= render 'noticeAlert'%>
+
+<div class = "container">
+	<div class = "row">
+		<div class = "col-md-6">
+			<h1>Business Units</h1>
+		</div>
+		<div class = "col-md-6">
+			<%= link_to 'Create New Business Unit', new_business_unit_path, class: "btn btn-primary pull-right", data: {toggle: "modal", target: "#add"}%>
+		</div>
+	</div>
+
+	<table id = "table_id">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Manager</th>
+				<th>Officer In Charged</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<%@business_units.each do |bu|%>
+				<tr>
+					<td><%= bu.name%></td>
+					<td><%= bu.manager_id%></td>
+					<td><%= bu.oic%></td>
+					<td>
+						<%= link_to 'View', business_unit_path(bu), method: :get,class: "btn btn-xs btn-success col-md-4", data: {toggle: 'modal', target: "#view"}%>
+						<%= link_to 'Edit', edit_business_unit_path(bu), class: "btn btn-xs btn-warning col-md-4", data: {toggle: 'modal', target: '#edit'}%>
+						<%= button_to 'Delete', business_unit_path(bu), method: :delete, onclick: "return confirm('Are you sure you would like to Business Unit: #{bu.name}')", class: "btn btn-xs btn-danger col-md-4"%>
+					</td>
+				</tr>
+			<%end%>
+		</tbody>
+	</table>
+</div>
+
+<!-- Modal for the addition of new business unit -->
+<div class = "modal fade" id = "add" role = "dialog">
+	<div class = "modal-dialog">
+		<div class = "modal-content"></div>
+	</div>
+</div>
+
+<!-- Modal for the editing of a business unit -->
+<div class = "modal fade" id = "edit" role = "dialog">
+	<div class = "modal-dialog">
+		<div class = "modal-content"></div>
+	</div>
+</div>
+
+<!-- Modal for the viewing a business unit -->
+<div class = "modal fade" id = "view" role = "dialog">
+	<div class = "modal-dialog">
+		<div class = "modal-content"></div>
+	</div>
+</div>
+
+<script>
+  $(function(){
+    $("#table_id").dataTable();
+  })
+</script>

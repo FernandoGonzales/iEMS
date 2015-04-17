@@ -1,0 +1,60 @@
+<%= render 'navbar'%>
+<%= render 'noticeAlert'%>
+<div class = "container">
+	<div class ="row">
+		<div class = "col-md-6">
+			<h1>Job Titles</h1>
+		</div>
+		<div class = "col-md-6">
+			<%= link_to 'Create New Job Title', new_job_title_path, class: "btn btn-primary pull-right", data: {toggle: "modal", target: "#add"}%>
+		</div>
+	</div>
+	
+	<table id = "table_id">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Description</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<%@jobTitles.each do |jobTitle|%>
+				<tr>
+					<td><%= jobTitle.title%></td>
+					<td><%= jobTitle.description%></td>
+					<td>
+						<div class = "col-md-2"></div>
+						<%= link_to 'Edit', edit_job_title_path(jobTitle), class: "btn btn-xs btn-warning col-md-4", data: {toggle: "modal", target: "#edit"}%>
+						<div class = "col-md-1"></div>
+						<%= button_to 'Delete', job_title_path(jobTitle), method: :delete, onclick: "return confirm('Are you sure you would like to delete Job Title: #{jobTitle.title}?')", class: "btn btn-xs btn-danger col-md-4"%>
+					</td>
+				</tr>
+			<%end%>
+		</tbody>
+	</table>
+</div>
+
+<div class = "modal fade" id = "add" role = "dialog">
+	<div class = "modal-dialog">
+		<div class = "modal-content"></div>
+	</div>
+</div>
+
+<div class = "modal fade" id = "edit" role = "dialog">
+	<div class = "modal-dialog">
+		<div class = "modal-content"></div>
+	</div>
+</div>
+
+<script>
+$(function(){
+    $("#table_id").dataTable();
+  })
+</script>
+<!--
+{
+    	"aaSorting": [[ 1, "asc" ], [2, "asc"]]
+    }
+	-->

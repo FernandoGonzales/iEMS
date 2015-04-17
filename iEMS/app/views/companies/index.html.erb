@@ -1,0 +1,62 @@
+<%= render 'navbar'%>
+<%= render 'noticeAlert'%>
+
+<div class = "container">
+	<div class = "row">
+		<div class = "col-md-6">
+			<h1>Companies Under iRipple</h1>
+		</div>
+		<div class = "col-md-6">
+			<%= link_to 'Create New Company', new_company_path, class: "btn btn-primary pull-right", data: {toggle: "modal", target: "#add"}%>
+		</div>
+		<table id = "table_id">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Address</th>
+					<th>Zip Code</th>
+					<th>Number</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<%@companies.each do |company|%>
+					<tr>
+						<td><%= company.name%></td>
+						<td><%= "#{company.add_street}, #{company.add_city} City"%></td>
+						<td><%= company.add_zip%></td>
+						<td><%= company.num%></td>
+						<td>
+							<!--<div class = "col-md-1"></div>-->
+							<%= link_to 'Edit', edit_company_path(company), class: "btn btn-xs btn-warning col-md-4", data: {toggle: 'modal', target: '#edit'}%>
+							<div class = "col-md-2"></div>
+
+							<%= button_to 'Delete', company_path(company), method: :delete, onclick: "return confirm('Are you sure you would like to delete Company: #{company.name}?')", class: "btn btn-xs btn-danger col-md-4"%>
+						</td>
+					</tr>
+				<%end%>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<!-- Modal for the addition of new company -->
+<div class = "modal fade" id = "add" role = "dialog">
+	<div class = "modal-dialog">
+		<div class = "modal-content"></div>
+	</div>
+</div>
+
+<!-- Modal for the editing of a company -->
+<div class = "modal fade" id = "edit" role = "dialog">
+	<div class = "modal-dialog">
+		<div class = "modal-content"></div>
+	</div>
+</div>
+
+<script>
+  $(function(){
+    $("#table_id").dataTable();
+  })
+</script>
