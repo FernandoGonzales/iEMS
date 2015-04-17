@@ -16,32 +16,15 @@
 				<li class = "dropdown">
 					<a href="#" class = "dropdown-toggle" data-toggle = "dropdown">User <b class = "caret"></b></a>
 					<ul class = "dropdown-menu">
-						<li><a href="#">Add User</a></li>
+						<li><a href= <%#= job_level_all_titles_path%>>Add User</a></li>
 						<li><a href="#">View Users</a></li>
 						<li><a href="#">Update User</a></li>
 						<li><a href="#">Delete User</a></li>
 					</ul>
 				</li>
 
-				<li class = "dropdown">
-					<a href="#" class = "dropdown-toggle" data-toggle = "dropdown">Job Title <b class = "caret"></b></a>
-					<ul class = "dropdown-menu">
-						<li><a href="#">Add Job Title</a></li>
-						<li><a href="#">View Job Titles</a></li>
-						<li><a href="#">Update Job Titles</a></li>
-						<li><a href="#">Delete Job Titles</a></li>
-					</ul>
-				</li>
-
-				<!--<li class = "dropdown">
-					<a href="#" class = "dropdown-toggle" data-toggle = "dropdown">Job Level <b class = "caret"></b></a>
-					<ul class = "dropdown-menu">
-						<li><%= link_to 'Add Job Level', new_job_level_path%></li>
-						<li><a href="#">View Job Level</a></li>
-						<li><a href="#">Update Job Level</a></li>
-						<li><a href="#">Delete Job Level</a></li>
-					</ul>
-				</li>-->
+				<li><%= link_to 'Companies', companies_path%></li>
+				<li><%= link_to 'Job Titles', job_titles_path%></li>
 				<li><%= link_to 'Job Levels', job_levels_path%></li>
 				<li><%= link_to 'Official Business', official_businesses_path%></li>
 

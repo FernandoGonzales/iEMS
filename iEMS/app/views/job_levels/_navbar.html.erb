@@ -22,17 +22,8 @@
 						<li><a href="#">Delete User</a></li>
 					</ul>
 				</li>
-
-				<li class = "dropdown">
-					<a href="#" class = "dropdown-toggle" data-toggle = "dropdown">Job Title <b class = "caret"></b></a>
-					<ul class = "dropdown-menu">
-						<li><a href="#">Add Job Title</a></li>
-						<li><a href="#">View Job Titles</a></li>
-						<li><a href="#">Update Job Titles</a></li>
-						<li><a href="#">Delete Job Titles</a></li>
-					</ul>
-				</li>
-
+				<li><%= link_to 'Companies', companies_path%></li>
+				<li><%= link_to 'Job Titles', job_titles_path%></li>
 				<li class="active"><%= link_to 'Job Levels', job_levels_path%></li>
 				<li><%= link_to 'Official Business', official_businesses_path%></li>
 

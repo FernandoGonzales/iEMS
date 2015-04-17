@@ -1,11 +1,15 @@
 class JobLevelsController < ApplicationController
+
 	def index
 		@jobLevels = JobLevel.all
-		@jobLevel = JobLevel.new
+		#@jobLevel = JobLevel.new
 	end
 
 	def show
 		@jobLevel = JobLevel.find(params[:id])
+	end
+
+	def all_titles
 	end
 
 	def new

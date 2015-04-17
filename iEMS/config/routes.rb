@@ -5,13 +5,12 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  #resources :jobtitles
-  resources :job_levels do
-    resources :job_titles
-  end
+  resources :job_levels
+  resources :job_titles
   resources :official_businesses
+  resources :companies
   root 'welcome#index'
-
+  #get 'job_level/all_titles' => 'job_level#all_titles'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
