@@ -4,7 +4,7 @@ class BusinessUnitsController < ApplicationController
 	end
 
 	def show
-		@business_unit = Business.find(params[:id])
+		@business_unit = BusinessUnit.find(params[:id])
 	end
 
 	def new
@@ -19,9 +19,9 @@ class BusinessUnitsController < ApplicationController
 		@business_unit = BusinessUnit.new(bu_params)
 
 		if @business_unit.save
-			redirect_to companies_path, notice: 'SUCCESS:Business Unit successfully created!'
+			redirect_to business_units_path, notice: 'SUCCESS:Business Unit successfully created!'
 		else
-			redirect_to companies_path, notice: 'FAILED:Adding of Business Unit failed.'
+			redirect_to business_units_path, notice: 'FAILED:Adding of Business Unit failed.'
 		end
 	end
 
@@ -29,20 +29,20 @@ class BusinessUnitsController < ApplicationController
 		@business_unit = BusinessUnit.find(params[:id])
 
 		if @business_unit.update(bu_params)
-			redirect_to companies_path, notice: 'SUCCESS:Update successful!'
+			redirect_to business_units_path, notice: 'SUCCESS:Update successful!'
 		else
-			redirect_to companies_path, notice: 'FAILED: Update failed.'
+			redirect_to business_units_path, notice: 'FAILED: Update failed.'
 		end
 	end
 
 	def destroy
 		@business_unit = BusinessUnit.find(params[:id])
 		@business_unit.destroy
-		redirect_to companies_path, notice: 'SUCCESS:Business Unit successfully deleted!'
+		redirect_to business_units_path, notice: 'SUCCESS:Business Unit successfully deleted!'
 	end
 
 	private
 	def bu_params
-		params.require(:business_unit).permit(:name, :supervisor_id, :report_to, :oic, :description)
+		params.require(:business_unit).permit(:name, :manager_id, :supervisor_id, :oic, :description)
 	end
 end

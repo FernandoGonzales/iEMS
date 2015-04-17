@@ -1,0 +1,26 @@
+<div class = "modal-header">
+	<h4><b><%= @business_unit.name%></b></h4>
+</div>
+
+<div class = "modal-body">
+	<table class = "table">
+		<tr>
+			<td><b>Manager:</b></td>
+			<td><%= @business_unit.manager_id%></td>
+		</tr>
+		<tr>
+			<td><b>Supervisor:</b></td>
+			<td><%= @business_unit.supervisor_id%></td>
+		</tr>
+		<tr>
+			<td><b>Officer in Charged:</b></td>
+			<td><%= @business_unit.oic%></td>
+		</tr>
+		<tr>
+			<td><b>Description:</b></td>
+			<td><%= @business_unit.description%></td>
+		</tr>
+	</table>
+</div>
+
+<div class = "modal-footer"></div>
