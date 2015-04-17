@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  supervisor_id: 1
+  report_to: 1
+  oic: 1
+  description: MyText
+
+two:
+  name: MyString
+  supervisor_id: 1
+  report_to: 1
+  oic: 1
+  description: MyText

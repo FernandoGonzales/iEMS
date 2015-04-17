@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :job_titles
   resources :official_businesses
   resources :companies
+  resources :business_units
   root 'welcome#index'
   #get 'job_level/all_titles' => 'job_level#all_titles'
   # Example of regular route:
