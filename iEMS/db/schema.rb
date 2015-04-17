@@ -11,9 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20150416024218) do
-=======
 ActiveRecord::Schema.define(version: 20150417044635) do
 
   create_table "business_units", force: :cascade do |t|
@@ -35,7 +32,6 @@ ActiveRecord::Schema.define(version: 20150417044635) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
->>>>>>> fea7ca1ac3f5bdf58ce6613742570a8f8579302e
 
   create_table "job_levels", force: :cascade do |t|
     t.string   "rank"
@@ -48,21 +44,31 @@ ActiveRecord::Schema.define(version: 20150417044635) do
   create_table "job_titles", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
+    t.integer  "jobLevel_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  create_table "official_businesses", force: :cascade do |t|
-    t.string   "requestType"
-    t.date     "dateFiled"
-    t.text     "description"
-    t.string   "status"
+  add_index "job_titles", ["jobLevel_id"], name: "index_job_titles_on_jobLevel_id"
+
+  create_table "ob_requests", force: :cascade do |t|
     t.string   "client"
-    t.datetime "datetimeDeparture"
-    t.datetime "datetimeArrival"
-    t.decimal  "timeDuration"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.string   "branch"
+    t.datetime "datetime_departure"
+    t.datetime "datetime_arrival"
+    t.decimal  "time_duration"
+    t.integer  "request_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.string   "request_type"
+    t.string   "status"
+    t.text     "description"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end
