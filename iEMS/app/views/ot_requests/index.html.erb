@@ -16,9 +16,9 @@
 			<table id = "table_id">
 			<thead>
 				<tr>
+					<th>Date Filed</th>
 					<th>Reason</th>
 					<th>Status</th>
-					<th>Date Created</th>
 					<th>Overtime Date</th>
 					<th>Time Start</th>
 					<th>Time End</th>
@@ -32,10 +32,10 @@
 					<%@otRequests.each do |otRequest|%>
 						<% if otRequest.request_id == request.id %>
 							<tr>
+								<td><%= otRequest.ot_date.strftime('%a, %d %b %Y') %></td><!-- date of overtime being requested -->
 								<td><%= request.description %></td>	<!-- Shows the reason for overtime -->
 								<td><%= request.status %></td>	<!-- status of the request -->
 								<td><%= request.created_at.to_date %> </td>
-								<td><%= otRequest.ot_date.strftime('%a, %d %b %Y') %></td><!-- date of overtime being requested -->
 								<td><%= otRequest.time_start.strftime('%H:%M:%S') %></td><!-- start time of request -->
 								<td><%= otRequest.time_end.strftime('%H:%M:%S') %></td><!-- end time of request -->
 								<td>

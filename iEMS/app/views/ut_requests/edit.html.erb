@@ -1,4 +1,38 @@
 <div class = "modal-header">
 	<h4>Edit Undertime Request</h4>
 </div>
-<%= render 'form'%>
+<%= form_for @request, url: ut_request_path, html: {class: "form-horizontal"} do |f|%>
+	<div class = "modal-body">
+		<div class = "form-group">
+			<%= label_tag(:description, "Reason: ", class: "col-md-2 control-label")%>
+			<div class = "col-md-10">
+				<%= f.text_field(:description, class: "form-control") %>
+			</div>
+		</div>
+		<%= f.hidden_field :request_type, value: "Undertime" %>
+		<%= f.hidden_field :status, value: "Pending" %>
+		<%= f.fields_for :ut_request do |ut| %>
+			<div class = "form-group">
+				<%= label_tag(:ut_date, "Undertime Date: ", class: "col-md-2 control-label")%>
+				<div class = "col-md-10">
+					<%= ut.date_select(:ut_date, class: "form-control") %>
+				</div>
+			</div>
+			<div class = "form-group">
+				<%= label_tag(:time_start, "Undertime Start: ", class: "col-md-2 control-label")%>
+				<div class = "col-md-10">
+					<%= ut.time_select(:time_start, class: "form-control") %>
+				</div>
+			</div>
+			<div class = "form-group">
+				<%= label_tag(:time_end, "Undertime End: ", class: "col-md-2 control-label")%>
+				<div class = "col-md-10">
+					<%= ut.time_select(:time_end, class: "form-control") %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+	<div class = "modal-footer">
+		<%= f.submit 'Save', class: "btn btn-primary"%>
+	</div>
+<%end%>

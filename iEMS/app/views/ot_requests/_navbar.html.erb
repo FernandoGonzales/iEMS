@@ -12,25 +12,25 @@
 		<div class = "collapse navbar-collapse navHeaderCollapse">
 			<ul class = "nav navbar-nav navbar-right">
 				<li><%= link_to 'Home', welcome_index_path%></li>
-
 				<li class = "dropdown">
-					<a href="#" class = "dropdown-toggle" data-toggle = "dropdown">User <b class = "caret"></b></a>
+					<a href="#" class = "dropdown-toggle" data-toggle = "dropdown">Jobs <b class = "caret"></b></a>
 					<ul class = "dropdown-menu">
-						<li><a href="#">Add User</a></li>
-						<li><a href="#">View Users</a></li>
-						<li><a href="#">Update User</a></li>
-						<li><a href="#">Delete User</a></li>
+						<li><%= link_to 'Job Titles', job_titles_path%></li>
+						<li><%= link_to 'Job Levels', job_levels_path%></li>
 					</ul>
 				</li>
 				<li><%= link_to 'Companies', companies_path%></li>
-				<li><%= link_to 'Job Titles', job_titles_path%></li>
-				<li><%= link_to 'Job Levels', job_levels_path%></li>
 				<li><%= link_to 'Business Unit', business_units_path%></li>
-				<li><%= link_to 'Official Business', ob_requests_path%></li>
-				<li><%= link_to 'Leave', leave_requests_path%></li>
-				<li class="active"><%= link_to 'Overtime', ot_requests_path%></li>
-				<li><%= link_to 'Undertime', ut_requests_path%></li>
-				<li><%= link_to 'Offset', offset_requests_path%></li>
+				<li class = "dropdown active">
+					<a href="#" class = "dropdown-toggle" data-toggle = "dropdown">Requests<b class = "caret"></b></a>
+					<ul class = "dropdown-menu">
+						<li><%= link_to 'Official Business', ob_requests_path%></li>
+						<li><%= link_to 'Leave', leave_requests_path%></li>
+						<li class="active"><%= link_to 'Overtime', ot_requests_path%></li>
+						<li><%= link_to 'Undertime', ut_requests_path%></li>
+						<li><%= link_to 'Offset', offset_requests_path%></li>
+					</ul>
+				</li>
 			</ul>
 		</div>
 	</div>

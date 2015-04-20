@@ -1,4 +1,38 @@
 <div class = "modal-header">
 	<h4>Edit Overtime Request</h4>
 </div>
-<%= render 'form'%>
+<%= form_for @request, url: ot_request_path, html: {class: "form-horizontal"} do |f|%>
+	<div class = "modal-body">
+		<div class = "form-group">
+			<%= label_tag(:description, "Reason: ", class: "col-md-2 control-label")%>
+			<div class = "col-md-10">
+				<%= f.text_field(:description, class: "form-control") %>
+			</div>
+		</div>
+		<%= f.hidden_field :request_type, value: "Overtime" %>
+		<%= f.hidden_field :status, value: "Pending" %>
+		<%= f.fields_for :ot_request do |ot| %>
+			<div class = "form-group">
+				<%= label_tag(:ot_date, "Overtime Date: ", class: "col-md-2 control-label")%>
+				<div class = "col-md-10">
+					<%= ot.date_select(:ot_date, class: "form-control") %>
+				</div>
+			</div>
+			<div class = "form-group">
+				<%= label_tag(:time_start, "Overtime Start: ", class: "col-md-2 control-label")%>
+				<div class = "col-md-10">
+					<%= ot.time_select(:time_start, class: "form-control") %>
+				</div>
+			</div>
+			<div class = "form-group">
+				<%= label_tag(:time_end, "Overtime End: ", class: "col-md-2 control-label")%>
+				<div class = "col-md-10">
+					<%= ot.time_select(:time_end, class: "form-control") %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+	<div class = "modal-footer">
+		<%= f.submit 'Save', class: "btn btn-primary"%>
+	</div>
+<%end%>
