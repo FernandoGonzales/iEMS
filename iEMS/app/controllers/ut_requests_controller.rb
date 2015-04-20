@@ -15,6 +15,7 @@ class UtRequestsController < ApplicationController
 
 	def edit
 		@request = Request.find(params[:id])
+		@request.build_ut_request
 	end
 
 	def create
@@ -29,7 +30,6 @@ class UtRequestsController < ApplicationController
 
 	def update
 		@request = Request.find(params[:id])
-	
 		if @request.update(req_params)
 			redirect_to ut_requests_path, notice: 'SUCCESS:Update success!'
 		else
