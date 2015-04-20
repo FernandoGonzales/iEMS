@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150419230557) do
+ActiveRecord::Schema.define(version: 20150420015401) do
 
   create_table "business_units", force: :cascade do |t|
     t.string   "name"
@@ -44,12 +44,9 @@ ActiveRecord::Schema.define(version: 20150419230557) do
   create_table "job_titles", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.integer  "jobLevel_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
-
-  add_index "job_titles", ["jobLevel_id"], name: "index_job_titles_on_jobLevel_id"
 
   create_table "leave_requests", force: :cascade do |t|
     t.string   "leave_type"
@@ -65,9 +62,22 @@ ActiveRecord::Schema.define(version: 20150419230557) do
     t.string   "branch"
     t.datetime "datetime_departure"
     t.datetime "datetime_arrival"
+    t.integer  "request_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.integer  "request_id"
+  end
+
+  create_table "official_businesses", force: :cascade do |t|
+    t.string   "client"
+    t.integer  "timeDuration"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.text     "description"
+    t.string   "requestType"
+    t.string   "status"
+    t.datetime "datetimeDeparture"
+    t.datetime "datetimeArrival"
+    t.date     "dateFiled"
   end
 
   create_table "offset_requests", force: :cascade do |t|
@@ -91,9 +101,9 @@ ActiveRecord::Schema.define(version: 20150419230557) do
     t.string   "request_type"
     t.string   "status"
     t.text     "description"
+    t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.integer  "user_id"
   end
 
   create_table "ut_requests", force: :cascade do |t|

@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  ot_date: 2015-04-19
-  time_start: 2015-04-19 22:19:52
-  time_end: 2015-04-19 22:19:52
-  ot_count: MyString
+  ot_date: 2015-04-20
+  time_start: 2015-04-20 09:53:19
+  time_end: 2015-04-20 09:53:19
+  request_id: 1
 
 two:
-  ot_date: 2015-04-19
-  time_start: 2015-04-19 22:19:52
-  time_end: 2015-04-19 22:19:52
-  ot_count: MyString
+  ot_date: 2015-04-20
+  time_start: 2015-04-20 09:53:19
+  time_end: 2015-04-20 09:53:19
+  request_id: 1

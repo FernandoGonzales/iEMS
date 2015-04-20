@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: MyString
+  branch: MyString
+  datetime_departure: 2015-04-20 09:52:08
+  datetime_arrival: 2015-04-20 09:52:08
+  request_id: 1
+
+two:
+  client: MyString
+  branch: MyString
+  datetime_departure: 2015-04-20 09:52:08
+  datetime_arrival: 2015-04-20 09:52:08
+  request_id: 1
