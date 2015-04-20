@@ -1,0 +1,88 @@
+<%= render 'navbar'%>
+<%= render 'noticeAlert'%>
+
+<div class = "container">
+	<div class = "row">
+		<div class = "col-md-6">
+			<h1>Official Business</h1> <!-- Name of page -->
+		</div>
+		<div class = "col-md-6">
+			<!-- Add button -->
+			<!-- Pressing the button will cause a modal/pop-up (add modal) to appear -->
+			<%= link_to 'Create Official Business', new_ob_request_path, class: "btn btn-primary pull-right", data: {toggle: "modal", target: "#add"}%>
+		</div>
+			<!-- Start of the table -->
+			<!-- Data Table was used to format the table and add the sort & search features -->
+			<table id = "table_id">
+			<thead>
+				<tr>
+					<th>Description</th>
+					<th>Status</th>
+					<th>Client</th>
+					<th>Branch</th>
+					<th>Date Created</th>
+					<th>Departure</th>
+					<th>Arrival</th>
+					<th>Duration(hrs.)</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- Loop for each official business in the database -->
+				<%@requests.each do |request|%>
+					<%@obRequests.each do |obRequest|%>
+						<% if obRequest.request_id == request.id %>
+							<tr>
+								<td><%= request.description %></td>
+								<td><%= request.status %></td>
+								<td><%= obRequest.client%></td>	<!-- Shows the client of the official business -->
+								<td><%= obRequest.branch%></td>	<!-- client branch -->
+								<td><%= obRequest.created_at.to_date %> </td>
+								<td><%= obRequest.datetime_departure.to_datetime.strftime('%a, %d %b %Y %H:%M:%S') %></td>	<!-- date and time of departure -->
+								<td><%= obRequest.datetime_arrival.to_datetime.strftime('%a, %d %b %Y %H:%M:%S') %></td>	<!-- date and time of arrival -->
+								<td><%= ((obRequest.datetime_arrival.to_datetime - obRequest.datetime_departure.to_datetime) * 24).to_f.round(2)%></td><!-- duration in hours of the official business -->
+								<td>
+								<!-- Edit button -->
+								<!-- Pressing the button will cause a modal/pop-up (edit modal) to appear -->
+								<!-- Passes the official business request parameters with the attribute "remote" to edit.html.erb which renders the form -->
+								<div class = "col-md-1"></div>
+								<%= link_to 'Edit', edit_ob_request_path(request), class: "btn btn-xs btn-warning col-md-10", data: {toggle: 'modal', target: '#edit'}%>
+								<!-- Delete button -->
+								<!-- Pressing the button will cause the system to ask the user for confirmation -->
+								<!-- Once the intent to delete the official business request is confirmed, the request will be deleted from the database -->		
+								<div class = "col-md-1"></div>
+								<%= button_to 'Delete', ob_request_path(request), method: :delete, onclick: "return confirm('Are you sure you would like to delete your Official Business request with #{obRequest.client} on #{obRequest.datetime_departure.to_datetime.strftime('%a, %d %b %Y %H:%M:%S')} to #{obRequest.datetime_arrival.to_datetime.strftime('%a, %d %b %Y %H:%M:%S')}')", class: "btn btn-xs btn-danger col-md-10"%>
+								</td>
+							</tr>
+						<%end%>
+					<%end%>
+				<%end%>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<!-- Modal for the addition of new official business -->
+<div class = "modal fade" id = "add" role = "dialog">
+	<div class = "modal-dialog">
+		<div class = "modal-content"></div>
+	</div>
+</div>
+
+<!-- Modal for the editing of official business -->
+<div class = "modal fade" id = "edit" role = "dialog">
+	<div class = "modal-dialog">
+		<div class = "modal-content"></div>
+	</div>
+</div>
+
+<!-- JavaScript for the data table -->
+<!-- The table is initially sorted using the 2nd column, level, in ascending order -->
+<script>
+  $(function(){
+    $("#table_id").dataTable({
+    	"aaSorting": [[ 2, "asc" ], [3, "asc"]]
+    });
+  })
+</script>

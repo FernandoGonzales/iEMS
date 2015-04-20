@@ -1,0 +1,85 @@
+<%= render 'navbar'%>
+<%= render 'noticeAlert'%>
+
+<div class = "container">
+	<div class = "row">
+		<div class = "col-md-6">
+			<h1>Leave Requests</h1> <!-- Name of page -->
+		</div>
+		<div class = "col-md-6">
+			<!-- Add button -->
+			<!-- Pressing the button will cause a modal/pop-up (add modal) to appear -->
+			<%= link_to 'Create Leave Requests', new_leave_request_path, class: "btn btn-primary pull-right", data: {toggle: "modal", target: "#add"}%>
+		</div>
+			<!-- Start of the table -->
+			<!-- Data Table was used to format the table and add the sort & search features -->
+			<table id = "table_id">
+			<thead>
+				<tr>
+					<th>Reason</th>
+					<th>Status</th>
+					<th>Date Created</th>
+					<th>Type</th>
+					<th>Start Date</th>
+					<th>End Date</th>
+					
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- Loop for each leave request in the database -->
+				<%@requests.each do |request|%>
+					<%@leaveRequests.each do |leaveRequest|%>
+						<% if leaveRequest.request_id == request.id %>
+							<tr>
+								<td><%= request.description %></td>	<!-- Shows the reason for the leave -->
+								<td><%= request.status %></td>	<!-- status of the request -->
+								<td><%= request.created_at.to_date %> </td>
+								<td><%= leaveRequest.leave_type %></td>	
+								<!-- type of leave being requested -->
+								<td><%= leaveRequest.date_start.strftime('%a, %d %b %Y') %></td><!-- start date of request -->
+								<td><%= leaveRequest.date_end.strftime('%a, %d %b %Y') %></td><!-- end date of request -->
+								<td>
+								<!-- Edit button -->
+								<!-- Pressing the button will cause a modal/pop-up (edit modal) to appear -->
+								<!-- Passes the leave request parameters with the attribute "remote" to edit.html.erb which renders the form -->
+								<div class = "col-md-1"></div>
+								<%= link_to 'Edit', edit_leave_request_path(request), class: "btn btn-xs btn-warning col-md-4", data: {toggle: 'modal', target: '#edit'}%>
+								<!-- Delete button -->
+								<!-- Pressing the button will cause the system to ask the user for confirmation -->
+								<!-- Once the intent to delete the leave request is confirmed, the request will be deleted from the database -->		
+								<div class = "col-md-1"></div>
+								<%= button_to 'Delete', leave_request_path(request), method: :delete, onclick: "return confirm('Are you sure you would like to delete your #{leaveRequest.leave_type} Leave request on #{leaveRequest.date_start.strftime('%a, %d %b %Y')} to #{leaveRequest.date_end.strftime('%a, %d %b %Y')}')", class: "btn btn-xs btn-danger col-md-4"%>			
+								</td>
+							</tr>
+						<%end%>
+					<%end%>
+				<%end%>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<!-- Modal for the addition of new leave request -->
+<div class = "modal fade" id = "add" role = "dialog">
+	<div class = "modal-dialog">
+		<div class = "modal-content"></div>
+	</div>
+</div>
+
+<!-- Modal for the editing of leave request -->
+<div class = "modal fade" id = "edit" role = "dialog">
+	<div class = "modal-dialog">
+		<div class = "modal-content"></div>
+	</div>
+</div>
+
+<!-- JavaScript for the data table -->
+<!-- The table is initially sorted using the 2nd column, level, in ascending order -->
+<script>
+  $(function(){
+    $("#table_id").dataTable({
+    	"aaSorting": [[ 2, "asc" ], [3, "asc"]]
+    });
+  })
+</script>

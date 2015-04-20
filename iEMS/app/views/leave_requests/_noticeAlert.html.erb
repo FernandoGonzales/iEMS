@@ -1,0 +1,26 @@
+<%if notice.nil? == false%>
+	<div class = "container">
+		<%if notice.split(":").first == "SUCCESS" %>
+			<div class = "alert alert-success alert-dismissable">
+				<button type = "button" class = "close" data-dismiss = "alert">&times;</button>
+				<%= notice.split(":").last%>
+			</div>
+		<% else %>
+			<div class = "alert alert-danger alert-dismissable">
+				<button type = "button" class = "close" data-dismiss = "alert">&times;</button>
+				<%= notice.split(":").last%>
+				<!--<div id="error_explanation">
+			    	<h2>
+				        <%= pluralize(@leaveRequest.errors.count, "error") %> prohibited
+				        this leave request from being saved:
+			    	</h2>
+			    	<ul>
+				        <% @leaveRequest.errors.full_messages.each do |msg| %>
+				          <li><%= msg %></li>
+				        <% end %>
+			    	</ul>
+			    </div>-->
+			</div>
+		<% end %>
+	</div>
+<%end%>

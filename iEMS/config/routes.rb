@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   resources :job_levels
   resources :job_titles
-  resources :official_businesses
+  resources :ob_requests
+  resources :ot_requests
+  resources :ut_requests
+  resources :leave_requests
+  resources :offset_requests
   resources :companies
   resources :business_units
   root 'welcome#index'

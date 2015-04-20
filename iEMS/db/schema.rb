@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417044635) do
+ActiveRecord::Schema.define(version: 20150419230557) do
 
   create_table "business_units", force: :cascade do |t|
     t.string   "name"
@@ -51,24 +51,58 @@ ActiveRecord::Schema.define(version: 20150417044635) do
 
   add_index "job_titles", ["jobLevel_id"], name: "index_job_titles_on_jobLevel_id"
 
+  create_table "leave_requests", force: :cascade do |t|
+    t.string   "leave_type"
+    t.date     "date_start"
+    t.date     "date_end"
+    t.integer  "request_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "ob_requests", force: :cascade do |t|
     t.string   "client"
     t.string   "branch"
     t.datetime "datetime_departure"
     t.datetime "datetime_arrival"
-    t.decimal  "time_duration"
-    t.integer  "request_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "request_id"
+  end
+
+  create_table "offset_requests", force: :cascade do |t|
+    t.date     "offset_date"
+    t.decimal  "offset_count"
+    t.integer  "request_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "ot_requests", force: :cascade do |t|
+    t.date     "ot_date"
+    t.time     "time_start"
+    t.time     "time_end"
+    t.integer  "request_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "requests", force: :cascade do |t|
     t.string   "request_type"
     t.string   "status"
     t.text     "description"
-    t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "user_id"
+  end
+
+  create_table "ut_requests", force: :cascade do |t|
+    t.date     "ut_date"
+    t.time     "time_start"
+    t.time     "time_end"
+    t.integer  "request_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

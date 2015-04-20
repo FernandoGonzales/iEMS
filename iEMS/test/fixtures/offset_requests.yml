@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  offset_date: 2015-04-20
+  offset_count: 9.99
+  request_id: 1
+
+two:
+  offset_date: 2015-04-20
+  offset_count: 9.99
+  request_id: 1

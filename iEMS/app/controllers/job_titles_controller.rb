@@ -33,7 +33,7 @@ class JobTitlesController < ApplicationController
 		if @jobTitle.update(title_params)
 			redirect_to job_titles_path, notice: 'SUCCESS:Update success!'
 		else
-			redirect_to job_titles_path, notice: 'FAILED:Update failed.!'
+			redirect_to job_titles_path, notice: 'FAILED:Update failed!'
 		end
 	end
 
