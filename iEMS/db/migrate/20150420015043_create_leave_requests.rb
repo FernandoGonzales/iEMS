@@ -1,4 +1,4 @@
-class CreateCreateLeaveRequests < ActiveRecord::Migration
+class CreateLeaveRequests < ActiveRecord::Migration
   def change
     create_table :leave_requests do |t|
       t.string :leave_type
